@@ -1,6 +1,17 @@
 # algo-lab
 Laboratory for algorithms. Use experimental approach to study algorithms. Implementations in rust.
 
+# Main goal for the experiments
+The main goal for this project is to get insights and learn more about the 
+algorithms and techniques being studied. Thus, I think a good general script 
+to follow for each experiment is: (1) - Implement and make sure the algorithm is correct.
+(2) - Visualize it. It is interesting if we have visual feedback from the algorithm working.
+(3) - Test performance. Try to compare to different implementations, including the following 
+programming languages: rust/C/C++.
+For the step two it is interesting to have some kind of macro that extracts information from the
+execution process and returns this information as textual data. This data will be used to generate
+visual elements about the data structure being studied.
+
 # Draft (General ideas that will be used to make the experiments possible)
 - the tests will be carried on algorithms or programs that are correct, thus, they
 must be thoroughly tested before the experiments.
