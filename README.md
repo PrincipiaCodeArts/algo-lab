@@ -4,9 +4,10 @@ Laboratory for algorithms. Use experimental approach to study algorithms. Implem
 # Main goal for the experiments
 The main goal for this project is to get insights and learn more about the 
 algorithms and techniques being studied. Thus, I think a good general script 
-to follow for each experiment is: (1) - Implement and make sure the algorithm is correct.
-(2) - Visualize it. It is interesting if we have visual feedback from the algorithm working.
-(3) - Test performance. Try to compare to different implementations, including the following 
+to follow for each experiment is: (
+1. Implement and make sure the algorithm is correct.
+2. Visualize it. It is interesting if we have visual feedback from the algorithm working.
+3. Test performance using criterion. Try to compare with different implementations, including the following 
 programming languages: rust/C/C++.
 For the step two it is interesting to have some kind of macro that extracts information from the
 execution process and returns this information as textual data. This data will be used to generate
