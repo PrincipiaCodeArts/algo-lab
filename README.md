@@ -159,6 +159,8 @@ cost.
 
 
 ## Experimental design template
+
+Below is a template for an experiment:
 - Question: (Random) How does average color count in random graphs depend on number of
   iterations I?
 - Performance indicators: color count
@@ -168,6 +170,9 @@ cost.
 - Design points: full factorial (4x7=28)
 - Outputs: All factors, color count every 100 iterations, number of nodes per color
   at beginning and end of each trial, full coloring at end of each trial.
+
+## Performance indicator
+
 
 # References
 1. McGeoch CC. A Guide to Experimental Algorithmics. Cambridge University Press; 2012.
