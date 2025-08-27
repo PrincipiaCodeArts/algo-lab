@@ -165,7 +165,9 @@ cost.
 - Factors: Random graphs(n, p), algorithm parameter I.
 - Levels: n=200..800 (+100), p=0.25..1 (+0.25), I=n^2
 - Trials: 25 per design point
-- Design points: full factorial (todo...
+- Design points: full factorial (4x7=28)
+- Outputs: All factors, color count every 100 iterations, number of nodes per color
+  at beginning and end of each trial, full coloring at end of each trial.
 
 # References
 1. McGeoch CC. A Guide to Experimental Algorithmics. Cambridge University Press; 2012.
