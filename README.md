@@ -173,6 +173,64 @@ Below is a template for an experiment:
 
 ## Performance indicator
 
+### Time
+Time performance indicators can be aimed at different points on the scale between abstract algorithms (e.g. using instruction count)
+and instantiated code (e.g. using CPU time to fine tune the implementation).
+For academic research, it is important to always include some platform independent measurements in
+the paper to allow replicability.
+
+It is important to notice that when we are dealing with memory hierarchy effects on the program 
+being tested, unexpected behavior may arise. If the memory footpring of the program exceeds some
+boundary, it may generate memory related discontinuity. Also, not all memory waits are considered
+as CPU time.
+
+Related to cache, we can have a cold start (empty the caches or load it with irrelevant data) or a warm
+start (load useful data to the cache).
+
+When dealing with concurrency and possible parallelism with multiple cores, elapsed time may be prefered.
+One strategy is to measure an initial timestamp from a single threaded initial process, run the process 
+concurrently, creating new threads as needed, after all threads have finished, measure the end timestamp
+from the original parent process.
+
+#### Instruction Count
+One simple way to measure performance is to measure the number of time some specific instruction was
+executed. This can be done by using integers to store the number of times a line was executed or a function
+was called. Rust macros could aid this process.
+#### Time Measurement
+There are two approaches to measure process time: 
+1. Elapsed time (real time, wall clock time): compare timestamps from start to end. This
+   measure technique is very sensitive to system load.
+2. CPU time (interval time): measured by the OS for each process. This measurement technique
+   becomes more precise with longer process time. 
+
+Guidelines for measuring time:
+- For single process with a minimum duration (> 1s), prefer CPU time. For shorter duration,
+  prefer high precision elapsed time.
+- Use lightly loaded systems: kill all competing applications, background processes, avoid generating
+  keystroke interrupts, and screen update events.
+
+A good tool to use for this purpose is the unix command `time`.
+
+#### Code Profilers
+When a computational experiment is developed to study a section of code rather than the process,
+we can use (1) - code counters, (2) - timein/timeout instructions, or (3) - code profilers (e.g. gprof,
+valgrind).
+
+An important observation about compiler-based code profilers (e.g. gprof, valgrind) is that they should not
+be used in combination with compiler optimization.
+
+#### Tools for Measuring Time
+- Unix:
+  - CPU time: sysconf(), clock_getres(), profil(), getrusage()
+  - Elapsed time: gettimeofday()
+  - CPU usage: top, ps
+  - Memory: top, free, vmstat. valgrind
+  - IO: iostat
+- Windows
+  - Elapsed time: GetTickCount, GetTickCount64, timeGetTime, timeGetSystemTime
+  - CPU usage: Usage
+
+### Solution Quality
 
 # References
 1. McGeoch CC. A Guide to Experimental Algorithmics. Cambridge University Press; 2012.
