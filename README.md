@@ -158,7 +158,14 @@ determine its constant values.
 cost.
 
 
-
+## Experimental design template
+- Question: (Random) How does average color count in random graphs depend on number of
+  iterations I?
+- Performance indicators: color count
+- Factors: Random graphs(n, p), algorithm parameter I.
+- Levels: n=200..800 (+100), p=0.25..1 (+0.25), I=n^2
+- Trials: 25 per design point
+- Design points: full factorial (todo...
 
 # References
 1. McGeoch CC. A Guide to Experimental Algorithmics. Cambridge University Press; 2012.
