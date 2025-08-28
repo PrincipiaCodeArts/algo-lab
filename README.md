@@ -154,7 +154,11 @@ properties affect performance the most?
     - Determine the convergence of algorithms in the context of 
     iterative-improvement heuristics and stochastic algorithms. A good stopping
     rule must be chosen.
-    - Full factorial designs maximize the information gained from one experiment
+    - Full factorial designs maximize the information gained from one experiment (for example,
+      testing an insertion sort implementation in regard to loop motion and sentinel
+      use allow us to see that: -- is the worst, +- improves, -+ makes it worse,
+      ++ improves the most. If we did not use the factorial approach, we may think
+      that sentinel optimization was bad).
 2. The horse race: Looks for winners and losers in the space of implementation
 ideas. Ex. What is the best implementation for some algorithm?
 3. Fitting functions: we know the form of some cost function and we want to 
