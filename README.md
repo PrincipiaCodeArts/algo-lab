@@ -279,7 +279,16 @@ After making the experimentation, if you decide to tune the algorithm/code, ther
       presentation to match the code.
     - Self-tuning data structures: when inputs are not known in advance, consider self-tunning data
       structures that respond to input properties observable at runtime.
-- Code tuning:
+- Code tuning: it is a lower level tuning than algorithm tuning. It looks at loop and procedures
+  instead of algorithm paradigms, and at memory layouts instead of data structures. Instead of focusing
+  on reducing the number of times a code block is executed, code tuning focuses on making a code block
+  faster by rewriting source code, making the compiler emits fewer machine instructions in the block.
+  - Loop tuning:
+    - Remove code from loop: most compilers will do this for obvious situations. But for non-trivial cases,
+      it can be benefic to remove unnecessary code from inner loop (e.g. remove target element assignment
+      from insertion sort's inner loop).
+    - Sentinel: add an extreme element in some extreme of the array being used by a loop to avoid unnecessary
+      computation.
 
 
 # References
