@@ -24,6 +24,11 @@ of key components, model building, and statistical analysis.
 design, implementation and algorithm tuning, code tuning, system software, and
 platform and hardware. Each of those dimensions represent broad strategies for
 speeding up algorithms.
+- Among the fundamental tools that will be implemented with the algo lab, I want to
+  implement a tool for generating random elements in a close way to the serde crate.
+  It will take advantage from derive macros to derive random properties for enums,
+  structs, vec, std types, etc. It will allow the use of attributes to fine tune
+  the behavior of the random generation.
 ## The experiment process
 - The experiment is a loosely cyclical process of planning and execution. The 
 steps are not necessary in order, but in the end, after refinement, they must 
@@ -231,6 +236,8 @@ be used in combination with compiler optimization.
   - CPU usage: Usage
 
 ### Solution Quality
+It depends on the problem and there is not too much we can do in terms of the framework.
+Use section 3.2 Solution Quality (page 94) as reference.
 
 # References
 1. McGeoch CC. A Guide to Experimental Algorithmics. Cambridge University Press; 2012.
