@@ -257,11 +257,8 @@ After making the experimentation, if you decide to tune the algorithm/code, ther
   - Memoization: store results to avoid recaltulating them in the future.
   - Finesse a calculation: replace an expensive exact calculation with an inexpensive bound or approximation,
     in such a way that the overall result is unchanged.
-  - Loop abort: add a test to stop a loop earlier.
   - Filtering: avoid inserting an element into a data structure if the element cannot affect the outcome
     of the computation.
-  - Customizing the data structure: select a data structure implementation that best match its pattern
-    of use.
   - Recursive algorithm tuning:
     - Pruning: implement tests to skip recursive calls when possible. Boost the strength of these tests
       by using preprocessing or by changing computation order.
@@ -271,6 +268,17 @@ After making the experimentation, if you decide to tune the algorithm/code, ther
       partial results as parameters).
     - Hybridize a recursive program: use alternative approaches depending on some conditions of the
       recursive call (e.g. use insertion sort for small recursive calls in quicksort).
+  - Iterative algorithm tuning:
+    - Skip expensive operations: add tests to avoid expensive operations in the main loop.
+    - Loop abort: add a test to stop a loop earlier.
+  - Data structure tuning: (1) - find right balance of costs among all operations, according to the
+    frequency in which they are invoked; (2) - take advantage of locality
+    - Customizing the data structure: select a data structure implementation that best match its pattern
+      of use.
+    - Change the input presentation: instead of changing the code to match the input, change the input
+      presentation to match the code.
+    - Self-tuning data structures: when inputs are not known in advance, consider self-tunning data
+      structures that respond to input properties observable at runtime.
 - Code tuning:
 
 
