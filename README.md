@@ -287,6 +287,8 @@ After making the experimentation, if you decide to tune the algorithm/code, ther
   instead of algorithm paradigms, and at memory layouts instead of data structures. Instead of focusing
   on reducing the number of times a code block is executed, code tuning focuses on making a code block
   faster by rewriting source code, making the compiler emits fewer machine instructions in the block.
+  Another important aspect about code tuning is that code tuning intuition fails in modern environment
+  (with hardware complex behavior and compiler optimizations), thus every change must be tested.
   - Loop tuning:
     - Remove code from loop: most compilers will do this for obvious situations. But for non-trivial cases,
       it can be benefic to remove unnecessary code from inner loop (e.g. remove target element assignment
