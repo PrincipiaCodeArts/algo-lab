@@ -252,7 +252,25 @@ After making the experimentation, if you decide to tune the algorithm/code, ther
     further recursion is abandoned.
   - Propagation: replaces a full computation in each recursive stage with an incremental computation that
     passes partial results as parameter.
-  - Preprocessing:  
+  - Preprocessing: add work before the algorithm begins (e.g. a reasonable good initial guess), to save
+    work when the algorithm executes.
+  - Memoization: store results to avoid recaltulating them in the future.
+  - Finesse a calculation: replace an expensive exact calculation with an inexpensive bound or approximation,
+    in such a way that the overall result is unchanged.
+  - Loop abort: add a test to stop a loop earlier.
+  - Filtering: avoid inserting an element into a data structure if the element cannot affect the outcome
+    of the computation.
+  - Customizing the data structure: select a data structure implementation that best match its pattern
+    of use.
+  - Recursive algorithm tuning:
+    - Pruning: implement tests to skip recursive calls when possible. Boost the strength of these tests
+      by using preprocessing or by changing computation order.
+    - Control subproblem size: remove elements from subproblems before recurring; add or subtract work to
+      balance subproblems.
+    - Shrink cost per stage: make a recursive stage faster (e.g. instead of redoing computation, pass
+      partial results as parameters).
+    - Hybridize a recursive program: use alternative approaches depending on some conditions of the
+      recursive call (e.g. use insertion sort for small recursive calls in quicksort).
 - Code tuning:
 
 
