@@ -239,5 +239,22 @@ be used in combination with compiler optimization.
 It depends on the problem and there is not too much we can do in terms of the framework.
 Use section 3.2 Solution Quality (page 94) as reference.
 
+## Tuning Algorithm and Code
+There are two main strategies for tunning code/algorithm:
+1. Reduce instruction count
+2. Reduce instruction time: identify time-expensive instructions and reduce their counts or their time.
+
+After making the experimentation, if you decide to tune the algorithm/code, there are some strategies below: 
+- Algorithm tuning:
+  - Branch-and-bound: interesting for exhaustive-search algorithms. The idea is to insert a test to compare
+    the minimum (or maximum) cost found so far to a lower-bound (upper-bound) estimate on the final cost of
+    a partially constructed solution. If the lower-bound (upper-bound) is greater than minimum (max) so far,
+    further recursion is abandoned.
+  - Propagation: replaces a full computation in each recursive stage with an incremental computation that
+    passes partial results as parameter.
+  - Preprocessing:  
+- Code tuning:
+
+
 # References
 1. McGeoch CC. A Guide to Experimental Algorithmics. Cambridge University Press; 2012.
