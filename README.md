@@ -246,7 +246,9 @@ Use section 3.2 Solution Quality (page 94) as reference.
 ## Tuning Algorithm and Code
 There are two main strategies for tunning code/algorithm:
 1. Reduce instruction count
-2. Reduce instruction time: identify time-expensive instructions and reduce their counts or their time.
+2. Reduce instruction time: identify time-expensive instructions and reduce their counts or their time. Most
+   code/algorithm tuning focus on the instruction count deduction. Instruction time can be considerably reduced
+   because of temporal locality and spatial locality principles.
 
 After making the experimentation, if you decide to tune the algorithm/code, there are some strategies below: 
 - Algorithm tuning:
@@ -288,14 +290,52 @@ After making the experimentation, if you decide to tune the algorithm/code, ther
   on reducing the number of times a code block is executed, code tuning focuses on making a code block
   faster by rewriting source code, making the compiler emits fewer machine instructions in the block.
   Another important aspect about code tuning is that code tuning intuition fails in modern environment
-  (with hardware complex behavior and compiler optimizations), thus every change must be tested.
+  (with hardware complex behavior and compiler optimizations), thus every change must be tested. Generally,
+  compilers are better than humans on code tuning.
   - Loop tuning:
     - Remove code from loop: most compilers will do this for obvious situations. But for non-trivial cases,
       it can be benefic to remove unnecessary code from inner loop (e.g. remove target element assignment
       from insertion sort's inner loop).
     - Sentinel: add an extreme element in some extreme of the array being used by a loop to avoid unnecessary
       computation.
+    - Loop fusion
+    - Loop fission
+    - Loop unroling: execute blocks of subsequent iterations to avoid loop header overhead.
+    - Unswitching: move a decision from inside a loop
+    - Nesting busy loops: busy loops should be inside
+  - Procedure tuning:
+    - Inlining functions
+    - Collapse procedure hierarchies: loop unrolling for recursive call
+    - Paremeters and local variables: pass by reference huge parameters and shrink the memory footprint
+      of local variables to avoid register spill.
+  - Objects and memory structures:
+    - Avoid object resizing: allocate a large enough object from the start to avoid unnecessary resizes
+      in the future.
+    - Mutability: when performance is needed, mutability can be very helpful because it avoids creation of
+      a new object when the original is changed. Other strategy related to mutability is recycling objects.
+    - Static bindings: moving computation form runtime to compile time can be benefical for performance. But, when
+      the object is frequently accessed it can be better to have it in a dynamic context for better memory locality. 
+- Tuning for memory:
+  - Shring the data footprint: avoid memory leaks, remove unneeded data, use compression, etc. This approach is the
+    opposite to memoization. Memoization exchanges memory by less instruction count.
+  - Cache efficience: organize the program so that access to memory elements displays as much spatial and temporal locality
+    as possible.
+    - Reuse as soon as possible
+    - Respect memory layouts: for example, loop through matrices by row/column if it is row/column-major
+- Tuning for IO:
+  - Minimize open/close operations: e.g. store data in a big file instead of multiple smaller files.
+  - Reduce latency: latency is the wait for the disk and transfer time is the wait for the data to transfer. Reduce
+    latency by using few data transfer operations.
+  - Decouple I/O and instruction execution: IO buffering and threading can help with that
+  - Exploit locality: organize data in disk to make best use of spatial and temporal locality.
+- Tuning by concurrency: below are some candidates for good tuning by concurrency
+  - Divide and conquer algorithms
+  - branch-and-bound
+  - array based computations
+  - Decoupling slow processes
+  - Minimize threading overhead: it is better to have few long running threads than many short lived threads.
 
-
+### Framework to tune algorithms
+The book describes a framework to tune algorithms. Check sec. 4.3 - The tuning process (page 146) for more details
 # References
 1. McGeoch CC. A Guide to Experimental Algorithmics. Cambridge University Press; 2012.
