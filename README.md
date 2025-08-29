@@ -29,6 +29,27 @@ speeding up algorithms.
   It will take advantage from derive macros to derive random properties for enums,
   structs, vec, std types, etc. It will allow the use of attributes to fine tune
   the behavior of the random generation.
+- An important aspect is the seed of random generators. They must be easily defined by
+  the tester.
+- The framework must make the creation of the following experiment very easy:
+  trials 3
+  nmin 50
+  nmax 90
+  nstep 20
+  seed 77271179
+  performance indicators ...
+  file formats
+  source ...
+  destination ...
+
+  A default value is defined for missing fields.
+- Output generated should be in very easy to use format. Performance data should
+  be in matrix format: one line per trial, with each line containing both the
+  experimental parameters (input size, trial number, code version, etc) and the
+  performance measurements for that trial. The matrix must contain a header (names
+  of each column) and a type header (types for each column) rows.
+- For algorithmic engineering projects, how to automate the process of documenting
+  the factorial combinations?
 ## The experiment process
 - The experiment is a loosely cyclical process of planning and execution. The 
 steps are not necessary in order, but in the end, after refinement, they must 
@@ -337,5 +358,35 @@ After making the experimentation, if you decide to tune the algorithm/code, ther
 
 ### Framework to tune algorithms
 The book describes a framework to tune algorithms. Check sec. 4.3 - The tuning process (page 146) for more details
+
+## The Toolbox
+
+### Interesting references
+- [Stony Brook Algorithm Repository](https://algorist.com/algorist.html)
+- [LEDA](https://algorithmic-solutions.info/site/leda/index.htm)
+- [DIMACS](http://dimacs.rutgers.edu/index.php/)
+- CGAL (Computational Geometry Algorithms Library)
+- The Stanford GraphBase
+- ACM Journal of Experimental Algorithms
+- The R Project for Statistical Computing
+
+### Test program
+- Test program: the program targe of the tests. It may or may not be identical to the application program.
+  Generally, it will be instrumented with additional code to help in the testing process.
+- Test apparatus (harness or scaffolding): extra wrapper code added to an implementation to support experiments.
+
+### Random generator
+A good RNG must follow the two properties: uniformity and independence. Linear congruential generators (those
+used in programming languages) fail in the latter. For that reason they are called pseudorandom number 
+generators.
+Some hints for using RNG:
+- Use huge seeds or run the RNG multiple times before the experiment if the seed is not controlled.
+- Low order bits tend to be less random.
+- Avoid using sequential RNG for generating compound data. For example, (x, y, z) generated using
+  sequential random numbers could generate a pattern of serial correlation. Use different streams
+  of random numbers with different seeds.
+- All the complex combinations of random elements generated for algorithmic experiments are
+  generated from RNGs.
+
 # References
 1. McGeoch CC. A Guide to Experimental Algorithmics. Cambridge University Press; 2012.
