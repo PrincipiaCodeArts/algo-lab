@@ -387,6 +387,11 @@ Some hints for using RNG:
   of random numbers with different seeds.
 - All the complex combinations of random elements generated for algorithmic experiments are
   generated from RNGs.
+- Typical random outputs: float [0, 1), int[0, m), permutation, sample (subset of k elements
+  drawn from n elements, with or without), ordered integer/real samples, resevoir samples,
+  random combinatorial objects (created from random sample).
+- Nonuniform random variables are also important for experimenting purposes. They are described
+  by probability distributions.
 
 # References
 1. McGeoch CC. A Guide to Experimental Algorithmics. Cambridge University Press; 2012.
