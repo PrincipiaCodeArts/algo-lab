@@ -392,6 +392,22 @@ Some hints for using RNG:
   random combinatorial objects (created from random sample).
 - Nonuniform random variables are also important for experimenting purposes. They are described
   by probability distributions.
+- Random structures and objects: there are multiple techniques for generating different types of
+  objects like: random uniform graph, nearest-neighbor graph, random proximity graph, etc, trees, etc.
+- Nonindependence: some generated inputs must depend on previous results and thus need to be generated
+  following this restriction. Some techniques can be used to achieve that.
+
+## Creating Analysis-Friendly Data
+- Magnify response and minimize variance.
+- Some hints for better experiments: design the experiments to maximize the information content in
+  the data: aim for clear views of simple relationships.
+  - Do more trials
+  - Expand the range of `n` values being tested
+  - Don't summarize prematurely
+  - Don't use lossy performance indicator
+  - Prefer narrow performance indicator: prefer count of a single operation instead of CPU time, for exemple.
+- In some situations, it is possible to reduce the variance of an experiment without increasing more trials
+  or sample size.
 
 # References
 1. McGeoch CC. A Guide to Experimental Algorithmics. Cambridge University Press; 2012.
