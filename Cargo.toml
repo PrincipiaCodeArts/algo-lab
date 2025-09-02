@@ -1,6 +1,4 @@
-[package]
-name = "algo-lab"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+members = ["matrix"]
+resolver = "3"
 
-[dependencies]
