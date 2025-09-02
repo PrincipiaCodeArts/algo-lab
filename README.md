@@ -409,5 +409,58 @@ Some hints for using RNG:
 - In some situations, it is possible to reduce the variance of an experiment without increasing more trials
   or sample size.
 
+### Simulation Shortcuts
+Making the experiment run faster reduce the variance, which improves many statistical measures of confidence
+in estimates of means.
+
+There are two main categories of shortcuts: 
+1. Trial overloading: rewrite the test program to output cost measurements for multiple design points
+   in one trial. This technique creates correlation between the instances of test.
+   Whether or not correlation makes a difference to the data analysis depends on what analysis technique
+   is used. Lack of independence is problematic for some classic methods of inferential statistics (such
+   as hypothesis testing, regression analysis, and calculations of confidence intervals.
+   Correlation and imbalance in data samples are less problematic for other categories of data analysis, especially
+   exploratory and graphical methods, where few a priori assumptions are made about the data.
+2. Modeling tricks: exploit information available in a laboratory context to simulate an algorithm more
+   efficiently than can be done by direct implementation.
+
+## Data Analysis
+Information scientists tell us that data, alone, have no value or meaning. When organized and interpreted,
+data become information, which is useful for answering factual questions.
+Data analysis is a process of inspecting, summarizing, and interpreting a set of data to transform 
+it into something useful: information is the immediate result, and knowledge the ultimate goal.
+
+Data analysis define some categories of data: 
+1. Categorical data: qualitative data.
+2. Ordinal data: can be ranked but has no scale
+3. Interval data: can be represented on a scale with no natual zero point, so ratios are not meaningful.
+   One common example is the temperature measured in scales like celcius or farenheith.
+4. Ratio data: it is a numerical data with a natural zero point, so ratios and other arithmetic
+   transformations have meaning. This category has the following subcategories:
+   1. Counts and amounts: are accumulated totals of discrete and continuous quantities, respectively.
+      They are always positive and often bounded at the low end but not on the high end. 
+   2. Ratios and proportions: both result from dividing one number by another. A proportion represents
+      part of a total and ranges between 0 and 1, while ratio can be greater than 1. Both are always
+      positive.
+   3. Differences: represent the distance between pairs of numbers and can be positive or negative.
+
+One important guideline is: you should report outcomes as ratio data whenever possible, but not at the
+price of lost information.
+
+### Univariate data
+A univariate data sample is a set of scalar numbers that represent outcomes from an experiment.
+
+In terms of descriptive statistics, location (a central tendency of the data) and dispersion (how much
+spread there is away from the center) are very important together. Do not report one withouth the other.
+
+Some examples of summaries for both location and dispersion:
+- Location: mean, median
+- Dispersion: variance, standard deviation, interquartile range
+
+### Guidelines
+- Apply logarithmic transformation, or more generally a power transformation, to impose symmetry in a
+  skewed data sample.
+   
+
 # References
 1. McGeoch CC. A Guide to Experimental Algorithmics. Cambridge University Press; 2012.
